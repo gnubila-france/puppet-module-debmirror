@@ -1,0 +1,26 @@
+#!/bin/bash
+
+su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
+<% if @rootdir %> --root=<%= @rootdir -%><% end -%>
+<% if @method %> --method=<%= @method -%><% end -%>
+<% if @dists %> --dist=<%= @dists -%><% end -%>
+<% if @sections %> --section=<%= @sections -%><% end -%>
+<% if @arch %> --arch=<%= @arch -%><% end -%>
+<% if @getsources%> --source<% end -%>
+<% if @getcontents %> --getcontents <% end -%>
+<% if @di_arch %> --di-arch=<%= @di_arch %><% end -%>
+<% if @i18n %> --i18n<% end -%>
+<% if @md5sums %> --md5sums<% end -%>
+<% if @diff %> --diff=<%= @diff %><% end -%>
+<% if @timeout %> --timeout=<%= @timeout %><% end -%>
+<% if @passive %> --passive<% end -%>
+<% if @proxy %> --proxy=<%= @proxy %><% end -%>
+<% if @remoteusername %> --user=<%= @remoteusername %><% end -%>
+<% if @remoteuserpassword %> --passwd=<%= @remoteuserpassword %><% end -%>
+<% if @rsync_extra %> --rsync-extra=<%= @rsync_extra %><% end -%>
+<% if @ignore_missing_release %> --ignore-missing-release<% end -%>
+<% if @ignore_release_pgp %> --ignore-release-gpg<% end -%>
+<% if @omitsuitesymlinks %> --omit-suite-symlinks<% end -%>
+<% if @postcleanup %> --postcleanup<% end -%>
+<% if @cleanup %> --cleanup<% end -%>
+ <%= @path -%>"
