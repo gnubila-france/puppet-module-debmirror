@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Import debian keyring
+su - <%= @user -%> -c "gpg --quiet --no-default-keyring --keyring trustedkeys.gpg --import /usr/share/keyrings/debian-archive-keyring.gpg > /dev/null"
+
 su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
 <% if @rootdir %> --root=<%= @rootdir -%><% end -%>
 <% if @method %> --method=<%= @method -%><% end -%>
