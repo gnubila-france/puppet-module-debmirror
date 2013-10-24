@@ -12,6 +12,7 @@ su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
 <% if @getsources%> --source<% end -%>
 <% if @getcontents %> --getcontents <% end -%>
 <% if @di_arch %> --di-arch=<%= @di_arch %><% end -%>
+<% if @di_dist %> --di-dist=<%= @di_dist %><% end -%>
 <% if @i18n %> --i18n<% end -%>
 <% if @md5sums %> --md5sums<% end -%>
 <% if @diff %> --diff=<%= @diff %><% end -%>
