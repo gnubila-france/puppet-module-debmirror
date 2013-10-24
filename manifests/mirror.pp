@@ -1,10 +1,10 @@
 #debmirror::mirror { 'debian':
 #  method      => 'http',
 #  host        => 'mirror.admin.private',
-#  dists       => [ 'squeeze' , 'squeeze-updates' ],
-#  sections    => [ 'main' , 'contrib' , 'non-free' , 'updates' ],
-#  arch        => [ 'i386' , 'amd64' ],
-#  source      => true,
+#  dists       => 'squeeze,squeeze-updates',
+#  sections    => 'main,contrib,non-free,updates',
+#  arch        => 'i386,amd64',
+#  getsources  => true,
 #  getcontents => true,
 #  user        => 'mirror'
 #  group       => 'mirror'
