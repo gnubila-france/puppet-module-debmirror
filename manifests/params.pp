@@ -33,6 +33,8 @@ class debmirror::params {
   $user_home     = '/srv/mirror'
   $user_shell    = '/bin/bash'
   $user_group    = 'mirror'
+  $user_group_id = undef
+  $user_uid      = undef
 
   # debmirror::mirror
 
