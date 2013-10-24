@@ -60,6 +60,7 @@ class debmirror::params {
   $mirror_remoteusername         = undef
   $mirror_remoteuserpassword     = undef
   $mirror_rsync_extra            = undef
+  $mirror_rsync_options          = undef
   $mirror_ignore_missing_release = undef
   $mirror_ignore_release_pgp     = undef
   $mirror_omitsuitesymlinks      = undef

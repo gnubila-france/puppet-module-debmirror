@@ -34,6 +34,7 @@ define debmirror::mirror (
   $remoteusername         = $debmirror::params::mirror_remoteusername,
   $remoteuserpassword     = $debmirror::params::mirror_remoteuserpassword,
   $rsync_extra            = $debmirror::params::mirror_rsync_extra,
+  $rsync_options          = $debmirror::params::mirror_rsync_options,
   $ignore_missing_release = $debmirror::params::mirror_ignore_missing_release,
   $ignore_release_pgp     = $debmirror::params::mirror_ignore_release_pgp,
   $omitsuitesymlinks      = $debmirror::params::mirror_omitsuitesymlinks,

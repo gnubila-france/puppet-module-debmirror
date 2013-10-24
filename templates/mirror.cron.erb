@@ -18,6 +18,7 @@ su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
 <% if @remoteusername %> --user=<%= @remoteusername %><% end -%>
 <% if @remoteuserpassword %> --passwd=<%= @remoteuserpassword %><% end -%>
 <% if @rsync_extra %> --rsync-extra=<%= @rsync_extra %><% end -%>
+<% if @rsync_options %> --rsync-options=\"<%= @rsync_options %>\"<% end -%>
 <% if @ignore_missing_release %> --ignore-missing-release<% end -%>
 <% if @ignore_release_pgp %> --ignore-release-gpg<% end -%>
 <% if @omitsuitesymlinks %> --omit-suite-symlinks<% end -%>
