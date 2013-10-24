@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
 <% if @rootdir %> --root=<%= @rootdir -%><% end -%>
