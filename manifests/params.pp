@@ -16,13 +16,13 @@ class debmirror::params {
   # debmirror::package
 
   $package_name = $::operatingsystem ? {
-    debian  => 'debmirror',
-    default => undef,
+    /debian|Ubuntu/ => 'debmirror',
+    default         => undef,
   }
 
   $package_ensure = $::operatingsystem ? {
-    debian  => 'installed',
-    default => undef,
+    /debian|Ubuntu/ => 'installed',
+    default         => undef,
   }
 
   # debmirror::package
@@ -42,10 +42,22 @@ class debmirror::params {
   $mirror_user                   = 'root'
   $mirror_group                  = 'root'
   $mirror_method                 = 'http'
-  $mirror_host                   = 'ftp.debian.org'
-  $mirror_rootdir                = 'debian'
-  $mirror_dists                  = 'squeeze'
-  $mirror_sections               = 'main,contrib,non-free'
+  $mirror_host                   = $::operatingsystem ? {
+    debian => 'ftp.debian.org',
+    Ubuntu => 'archive.ubuntu.com',
+  }
+  $mirror_rootdir                = $::operatingsystem ? {
+    debian => 'debian',
+    Ubuntu => 'ubuntu',
+  }
+  $mirror_dists                  = $::operatingsystem ? {
+    debian => 'wheezy',
+    Ubuntu => 'trusty',
+  }
+  $mirror_sections               = $::operatingsystem ? {
+    debian => 'main,contrib,non-free',
+    Ubuntu => 'main,universe,multiverse',
+  }
   $mirror_arch                   = 'i386,amd64'
   $mirror_di_dist                = undef
   $mirror_di_arch                = undef
@@ -66,5 +78,6 @@ class debmirror::params {
   $mirror_omitsuitesymlinks      = undef
   $mirror_postcleanup            = undef
   $mirror_cleanup                = undef
+  $mirror_log                    = undef
 
 }
