@@ -79,5 +79,6 @@ class debmirror::params {
   $mirror_postcleanup            = undef
   $mirror_cleanup                = undef
   $mirror_log                    = undef
+  $mirror_verbose                = false
 
 }

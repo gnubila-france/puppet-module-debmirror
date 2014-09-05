@@ -40,6 +40,8 @@ define debmirror::mirror (
   $omitsuitesymlinks      = $debmirror::params::mirror_omitsuitesymlinks,
   $postcleanup            = $debmirror::params::mirror_postcleanup,
   $cleanup                = $debmirror::params::mirror_cleanup,
+  $log                    = $debmirror::params::mirror_log,
+  $verbose                = $debmirror::params::mirror_verbose,
 
 ) {
 

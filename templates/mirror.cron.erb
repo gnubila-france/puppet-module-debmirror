@@ -28,4 +28,5 @@ su - <%= @user -%> -c "debmirror --host=<%= @host -%>
 <% if @omitsuitesymlinks %> --omit-suite-symlinks<% end -%>
 <% if @postcleanup %> --postcleanup<% end -%>
 <% if @cleanup %> --cleanup<% end -%>
- <%= @path -%>"
+<% if @verbose %> --verbose<% end -%>
+ <%= @path -%>" <% if @log -%><%= @log -%><% end %>
