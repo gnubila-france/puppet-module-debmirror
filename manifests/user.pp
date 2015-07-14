@@ -8,7 +8,9 @@
 #   [*user_password*] - The password for the debmirror user.
 #   [*user_home*]     - The home directory for the debmirror user.
 #   [*user_shell*]    - The shell for the debmirror user.
+#   [*user_group_id*] - The group numerical ID for the debmirror user.
 #   [*user_group*]    - The group for the debmirror user.
+#   [*user_uid*]      - The user numerical ID for the debmirror user.
 #
 # TODO: Manage following parameters
 #   - user_password_disabled
@@ -29,6 +31,8 @@ class debmirror::user (
   $user_home     = $debmirror::params::user_home,
   $user_shell    = $debmirror::params::user_shell,
   $user_group    = $debmirror::params::user_group,
+  $user_group_id = $debmirror::params::user_group_id,
+  $user_uid      = $debmirror::params::user_uid,
 
 ) inherits debmirror::params {
 
@@ -38,11 +42,13 @@ class debmirror::user (
     gid      => "${user_group}",
     home     => "${user_home}",
     password => "${user_password}",
+    uid      => "${user_uid}",
   }
 
   group { "${user_group}":
     ensure => present,
     system => true,
+    gid    => "${user_group_id}",
   }
 
   file { "${user_home}":

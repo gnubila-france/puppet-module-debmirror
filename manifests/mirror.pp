@@ -1,10 +1,10 @@
 #debmirror::mirror { 'debian':
 #  method      => 'http',
 #  host        => 'mirror.admin.private',
-#  dists       => [ 'squeeze' , 'squeeze-updates' ],
-#  sections    => [ 'main' , 'contrib' , 'non-free' , 'updates' ],
-#  arch        => [ 'i386' , 'amd64' ],
-#  source      => true,
+#  dists       => 'squeeze,squeeze-updates',
+#  sections    => 'main,contrib,non-free,updates',
+#  arch        => 'i386,amd64',
+#  getsources  => true,
 #  getcontents => true,
 #  user        => 'mirror'
 #  group       => 'mirror'
@@ -34,11 +34,14 @@ define debmirror::mirror (
   $remoteusername         = $debmirror::params::mirror_remoteusername,
   $remoteuserpassword     = $debmirror::params::mirror_remoteuserpassword,
   $rsync_extra            = $debmirror::params::mirror_rsync_extra,
+  $rsync_options          = $debmirror::params::mirror_rsync_options,
   $ignore_missing_release = $debmirror::params::mirror_ignore_missing_release,
   $ignore_release_pgp     = $debmirror::params::mirror_ignore_release_pgp,
   $omitsuitesymlinks      = $debmirror::params::mirror_omitsuitesymlinks,
   $postcleanup            = $debmirror::params::mirror_postcleanup,
   $cleanup                = $debmirror::params::mirror_cleanup,
+  $log                    = $debmirror::params::mirror_log,
+  $verbose                = $debmirror::params::mirror_verbose,
 
 ) {
 

@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
+# Import debian keyring
+su - <%= @user -%> -c "gpg --quiet --no-default-keyring --keyring trustedkeys.gpg --import /usr/share/keyrings/<%= @operatingsystem.downcase -%>-archive-keyring.gpg > /dev/null"
+
+su - <%= @user -%> -c "debmirror --host=<%= @host -%>
 <% if @rootdir %> --root=<%= @rootdir -%><% end -%>
 <% if @method %> --method=<%= @method -%><% end -%>
 <% if @dists %> --dist=<%= @dists -%><% end -%>
@@ -9,6 +12,7 @@ su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
 <% if @getsources%> --source<% end -%>
 <% if @getcontents %> --getcontents <% end -%>
 <% if @di_arch %> --di-arch=<%= @di_arch %><% end -%>
+<% if @di_dist %> --di-dist=<%= @di_dist %><% end -%>
 <% if @i18n %> --i18n<% end -%>
 <% if @md5sums %> --md5sums<% end -%>
 <% if @diff %> --diff=<%= @diff %><% end -%>
@@ -18,9 +22,11 @@ su - <%= @user -%> -c "debmirror --verbose --host=<%= @host -%>
 <% if @remoteusername %> --user=<%= @remoteusername %><% end -%>
 <% if @remoteuserpassword %> --passwd=<%= @remoteuserpassword %><% end -%>
 <% if @rsync_extra %> --rsync-extra=<%= @rsync_extra %><% end -%>
+<% if @rsync_options %> --rsync-options=\"<%= @rsync_options %>\"<% end -%>
 <% if @ignore_missing_release %> --ignore-missing-release<% end -%>
 <% if @ignore_release_pgp %> --ignore-release-gpg<% end -%>
 <% if @omitsuitesymlinks %> --omit-suite-symlinks<% end -%>
 <% if @postcleanup %> --postcleanup<% end -%>
 <% if @cleanup %> --cleanup<% end -%>
- <%= @path -%>"
+<% if @verbose %> --verbose<% end -%>
+ <%= @path -%>" <% if @log -%><%= @log -%><% end %>
